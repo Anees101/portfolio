@@ -80,7 +80,10 @@
       <h1>Ahmad Anees</h1>
       <p> <span class="typed" data-typed-items="I'm a Freelancer, I Do Graphic Designing, I am Good In Technology, Having Decent Computer Skills, I Do Photo Editing / Illustration, I Do Vidro Editing"></span></p>
     </div>
-  </section><!-- End Hero -->
+  </section>   
+
+
+
 
   
 
@@ -107,8 +110,13 @@
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>Ahmad Anees Mohammed</h3>
             <p class="fst-italic">
-              Hello everyone, Thanks for reaching me here, I can do all work related to Graphic Designing Industry and Video, I Can Also Do Many Software Base Work like <p> <span class="typed" data-typed-items="Excel, Word, Powrpoint, Photoshop, Illustrator, Filmora & More"></span></p>.
-            </p>
+              Hello everyone, Thanks for reaching me here, I can do all work related to Graphic Designing Industry and Video, I Can Also Do Many Software Base Work I Knew Software Like 
+
+  <a href="" class="typewrite" data-period="2000" data-type='[ "Excel", "Word", "Powrpoint", "Photoshop", "Illustrator", "Filmora & More" ]'>
+    <span class="wrap"></span>
+  </a>
+
+
             <div class="row">
               <div class="col-lg-6">
                 <ul>
@@ -334,9 +342,67 @@
 
 
 
+<!-- =====================  -->
 
+<script type="text/javascript">
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
 
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
 
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+
+</script>
 
 
 
